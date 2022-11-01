@@ -77,7 +77,7 @@ mvn -P with-jre clean package
 ./start.sh GUI
 ```
 
-- User interface became `GUI`;
+- User interface became `GUI`.
 
 > On Windows you must enter command without `./` in start
 
