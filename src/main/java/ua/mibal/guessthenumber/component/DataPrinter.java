@@ -23,5 +23,7 @@ package ua.mibal.guessthenumber.component;
  */
 public interface DataPrinter {
 
+    void printInstructions();
+
     void printInfoMessage(String message);
 }
