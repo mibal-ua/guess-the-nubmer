@@ -18,6 +18,9 @@ package ua.mibal.guessthenumber.component;
 
 import ua.mibal.guessthenumber.model.UserInterface;
 
+import static ua.mibal.guessthenumber.model.UserInterface.CONSOLE;
+import static ua.mibal.guessthenumber.model.UserInterface.GUI;
+
 /**
  * @author Michael Balakhon
  * @link t.me/mibal_ua.
@@ -26,11 +29,33 @@ public class ArgumentParser {
 
     private UserInterface userInterface;
 
-    public ArgumentParser(final String[] args) {
+    private final String[] args;
 
+    public ArgumentParser(final String[] args) {
+        this.args = args;
+    }
+
+    public void parse() {
+        for (final String arg : args) {
+            if (CONSOLE.name().equalsIgnoreCase(arg) || GUI.name().equalsIgnoreCase(arg)) {
+                if (userInterface == null) {
+                    userInterface = UserInterface.valueOf(arg.toUpperCase());
+                } else {
+                    System.err.printf(
+                            "Invalid command line argument: '%s', because user interface already set: '%s'.%n",
+                            arg, userInterface
+                    );
+                }
+            } else {
+                System.err.printf("Unsupported command line argument: '%s'.%n", arg);
+            }
+        }
+        if (userInterface == null) {
+            userInterface = GUI;
+        }
     }
 
     public UserInterface getUI() {
-        return null;
+        return userInterface;
     }
 }
