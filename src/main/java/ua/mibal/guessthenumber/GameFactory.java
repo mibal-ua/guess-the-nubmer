@@ -52,7 +52,7 @@ public class GameFactory {
             gameOverHandler = gameWindow;
         } else if(userInterface == CONSOLE){
             dataPrinter = new ConsoleDataPrinter();
-            inputReader = new ConsoleInputReader(dataPrinter);
+            inputReader = new ConsoleInputReader();
             gameOverHandler = new ConsoleGameOverHandler();
         } else {
             throw new IllegalArgumentException(format(

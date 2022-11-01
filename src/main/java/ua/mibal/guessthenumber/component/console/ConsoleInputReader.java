@@ -16,8 +16,9 @@
 
 package ua.mibal.guessthenumber.component.console;
 
-import ua.mibal.guessthenumber.component.DataPrinter;
 import ua.mibal.guessthenumber.component.UserInputReader;
+
+import java.util.Scanner;
 
 /**
  * @author Michael Balakhon
@@ -25,11 +26,8 @@ import ua.mibal.guessthenumber.component.UserInputReader;
  */
 public class ConsoleInputReader implements UserInputReader {
 
-    public ConsoleInputReader(final DataPrinter dataPrinter) {
-    }
-
     @Override
     public int getUserInput() {
-        return 0;
+        return new Scanner(System.in).nextInt();
     }
 }
