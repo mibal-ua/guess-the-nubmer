@@ -16,6 +16,8 @@
 
 package ua.mibal.guessthenumber.component;
 
+import java.util.Random;
+
 /**
  * @author Michael Balakhon
  * @link t.me/mibal_ua.
@@ -23,6 +25,6 @@ package ua.mibal.guessthenumber.component;
 public class Randomizer {
 
     public static int getNewNumber() {
-        return 0;
+        return new Random().nextInt(10);
     }
 }
