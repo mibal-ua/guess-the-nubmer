@@ -25,6 +25,11 @@ import ua.mibal.guessthenumber.component.DataPrinter;
 public class ConsoleDataPrinter implements DataPrinter {
 
     @Override
+    public void printInstructions() {
+        System.out.println("Enter riddle number between 0 and 9:");
+    }
+
+    @Override
     public void printInfoMessage(final String message) {
         System.out.println(message);
     }
