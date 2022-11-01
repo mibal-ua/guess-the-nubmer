@@ -54,7 +54,7 @@ public class GameFactory {
         } else if (userInterface == CONSOLE) {
             dataPrinter = new ConsoleDataPrinter();
             inputReader = new ConsoleInputReader();
-            gameOverHandler = new ConsoleGameOverHandler();
+            gameOverHandler = new ConsoleGameOverHandler(dataPrinter);
         } else {
             throw new IllegalArgumentException(format(
                     "User interface `%s` is incorrect", userInterface.name()

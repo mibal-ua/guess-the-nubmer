@@ -16,7 +16,10 @@
 
 package ua.mibal.guessthenumber.component.console;
 
+import ua.mibal.guessthenumber.component.DataPrinter;
 import ua.mibal.guessthenumber.component.GameOverHandler;
+
+import java.util.Scanner;
 
 /**
  * @author Michael Balakhon
@@ -24,8 +27,15 @@ import ua.mibal.guessthenumber.component.GameOverHandler;
  */
 public class ConsoleGameOverHandler implements GameOverHandler {
 
+    private final DataPrinter dataPrinter;
+
+    public ConsoleGameOverHandler(final DataPrinter dataPrinter) {
+        this.dataPrinter = dataPrinter;
+    }
+
     @Override
     public void gameOver() {
-
+        dataPrinter.printInfoMessage("\nPress any key to continue...");
+        new Scanner(System.in).nextLine();
     }
 }
