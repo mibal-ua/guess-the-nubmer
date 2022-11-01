@@ -19,13 +19,9 @@ package ua.mibal.guessthenumber.component;
 
 /**
  * @author Michael Balakhon
- * @link http://t.me/mibal_ua
+ * @link t.me/mibal_ua
  */
 public interface DataPrinter {
 
-    void printInstructions();
-
     void printInfoMessage(String message);
-
-    void printErrorMessage(String message);
 }
