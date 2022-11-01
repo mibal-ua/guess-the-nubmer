@@ -16,17 +16,30 @@
 
 package ua.mibal.guessthenumber.component;
 
+import static java.lang.String.format;
+
 /**
  * @author Michael Balakhon
  * @link t.me/mibal_ua.
  */
 public class WinnerVerifier {
 
+    private String numberComparisonInfo;
+
     public boolean isWin(final int riddleNumber, final int userNumber) {
+        if (riddleNumber > userNumber) {
+            numberComparisonInfo = format(
+                    "number > %s. Try again:", userNumber);
+        } else if (riddleNumber < userNumber) {
+            numberComparisonInfo = format(
+                    "number < %s. Try again:", userNumber);
+        } else {
+            return true;
+        }
         return false;
     }
 
     public String getNumberComparisonInfo() {
-        return null;
+        return numberComparisonInfo;
     }
 }
