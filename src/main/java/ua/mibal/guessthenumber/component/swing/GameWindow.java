@@ -17,13 +17,14 @@
 package ua.mibal.guessthenumber.component.swing;
 
 import ua.mibal.guessthenumber.component.DataPrinter;
+import ua.mibal.guessthenumber.component.GameOverHandler;
 import ua.mibal.guessthenumber.component.UserInputReader;
 
 /**
  * @author Michael Balakhon
  * @link t.me/mibal_ua.
  */
-public class GameWindow implements DataPrinter, UserInputReader {
+public class GameWindow implements DataPrinter, UserInputReader, GameOverHandler {
     @Override
     public void printInstructions() {
 
@@ -40,12 +41,12 @@ public class GameWindow implements DataPrinter, UserInputReader {
     }
 
     @Override
-    public void printGameTable(final GameTable gameTable) {
-
+    public int getUserInput() {
+        return 0;
     }
 
     @Override
-    public Cell getUserInput() {
-        return null;
+    public void gameOver() {
+
     }
 }
