@@ -37,6 +37,7 @@ public class GameFactory {
 
     public GameFactory(final String[] args) {
         final ArgumentParser argumentParser = new ArgumentParser(args);
+        argumentParser.parse();
         userInterface = argumentParser.getUI();
     }
 
@@ -45,12 +46,12 @@ public class GameFactory {
         UserInputReader inputReader;
         final WinnerVerifier winnerVerifier = new WinnerVerifier();
         GameOverHandler gameOverHandler;
-        if(userInterface == GUI) {
+        if (userInterface == GUI) {
             final GameWindow gameWindow = new GameWindow();
             dataPrinter = gameWindow;
             inputReader = gameWindow;
             gameOverHandler = gameWindow;
-        } else if(userInterface == CONSOLE){
+        } else if (userInterface == CONSOLE) {
             dataPrinter = new ConsoleDataPrinter();
             inputReader = new ConsoleInputReader();
             gameOverHandler = new ConsoleGameOverHandler();
