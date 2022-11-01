@@ -14,15 +14,38 @@
  * limitations under the License.
  */
 
-package ua.mibal.guessthenumber;
+package ua.mibal.guessthenumber.component.swing;
+
+import ua.mibal.guessthenumber.component.DataPrinter;
+import ua.mibal.guessthenumber.component.UserInputReader;
 
 /**
  * @author Michael Balakhon
  * @link t.me/mibal_ua.
  */
-public class Game {
+public class GameWindow implements DataPrinter, UserInputReader {
+    @Override
+    public void printInstructions() {
 
-    public void play() {
+    }
 
+    @Override
+    public void printInfoMessage(final String message) {
+
+    }
+
+    @Override
+    public void printErrorMessage(final String message) {
+
+    }
+
+    @Override
+    public void printGameTable(final GameTable gameTable) {
+
+    }
+
+    @Override
+    public Cell getUserInput() {
+        return null;
     }
 }

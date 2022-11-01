@@ -16,17 +16,47 @@
 
 package ua.mibal.guessthenumber;
 
+import ua.mibal.guessthenumber.component.ArgumentParser;
+import ua.mibal.guessthenumber.component.DataPrinter;
+import ua.mibal.guessthenumber.component.Game;
+import ua.mibal.guessthenumber.component.UserInputReader;
+import ua.mibal.guessthenumber.component.console.ConsoleDataPrinter;
+import ua.mibal.guessthenumber.component.console.ConsoleInputReader;
+import ua.mibal.guessthenumber.component.swing.GameWindow;
+import ua.mibal.guessthenumber.model.UserInterface;
+
+import static java.lang.String.format;
+import static ua.mibal.guessthenumber.model.UserInterface.CONSOLE;
+import static ua.mibal.guessthenumber.model.UserInterface.GUI;
+
 /**
  * @author Michael Balakhon
  * @link t.me/mibal_ua.
  */
 public class GameFactory {
 
-    public GameFactory(final String[] args) {
+    private final UserInterface userInterface;
 
+    public GameFactory(final String[] args) {
+        final ArgumentParser argumentParser = new ArgumentParser(args);
+        userInterface = argumentParser.getUI();
     }
 
     public Game create() {
-        return null;
+        DataPrinter dataPrinter;
+        UserInputReader inputReader;
+        if(userInterface == GUI) {
+            final GameWindow gameWindow = new GameWindow();
+            dataPrinter = gameWindow;
+            inputReader = gameWindow;
+        } else if(userInterface == CONSOLE){
+            dataPrinter = new ConsoleDataPrinter();
+            inputReader = new ConsoleInputReader(dataPrinter);
+        } else {
+            throw new IllegalArgumentException(format(
+                    "User interface `%s` is undetected", userInterface.name()
+            ));
+        }
+        return new Game(dataPrinter, inputReader);
     }
 }
