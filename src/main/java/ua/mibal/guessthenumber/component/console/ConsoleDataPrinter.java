@@ -23,18 +23,9 @@ import ua.mibal.guessthenumber.component.DataPrinter;
  * @link t.me/mibal_ua.
  */
 public class ConsoleDataPrinter implements DataPrinter {
-    @Override
-    public void printInstructions() {
-
-    }
 
     @Override
     public void printInfoMessage(final String message) {
-
-    }
-
-    @Override
-    public void printErrorMessage(final String message) {
-
+        System.out.println(message);
     }
 }
