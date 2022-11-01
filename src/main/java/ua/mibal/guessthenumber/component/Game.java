@@ -43,7 +43,7 @@ public class Game {
 
     public void play() {
         int riddleNumber = Randomizer.getNewNumber();
-        dataPrinter.printInfoMessage("Enter riddle number between 0 and 9:");
+        dataPrinter.printInstructions();
         while (true) {
             int userNumber = inputReader.getUserInput();
             if (winnerVerifier.isWin(riddleNumber, userNumber)) {
