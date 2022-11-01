@@ -17,6 +17,7 @@
 package ua.mibal.guessthenumber;
 
 import ua.mibal.guessthenumber.component.*;
+import ua.mibal.guessthenumber.component.config.ArgumentParser;
 import ua.mibal.guessthenumber.component.console.ConsoleDataPrinter;
 import ua.mibal.guessthenumber.component.console.ConsoleGameOverHandler;
 import ua.mibal.guessthenumber.component.console.ConsoleInputReader;

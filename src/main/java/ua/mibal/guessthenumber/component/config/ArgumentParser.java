@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package ua.mibal.guessthenumber.component;
+package ua.mibal.guessthenumber.component.config;
 
 import ua.mibal.guessthenumber.model.UserInterface;
 
