@@ -22,11 +22,37 @@ package ua.mibal.guessthenumber.component;
  */
 public class Game {
 
-    public Game(final DataPrinter dataPrinter, final UserInputReader inputReader) {
+    private final DataPrinter dataPrinter;
 
+    private final UserInputReader inputReader;
+
+    private final GameOverHandler gameOverHandler;
+
+    private final WinnerVerifier winnerVerifier;
+
+    public Game(final DataPrinter dataPrinter,
+                final UserInputReader inputReader,
+                final GameOverHandler gameOverHandler,
+                final WinnerVerifier winnerVerifier) {
+        this.dataPrinter = dataPrinter;
+        this.inputReader = inputReader;
+        this.gameOverHandler = gameOverHandler;
+        this.winnerVerifier = winnerVerifier;
     }
 
-    public void play() {
 
+    public void play() {
+        int riddleNumber = Randomizer.getNewNumber();
+        dataPrinter.printInfoMessage("Enter riddle number between 0 and 9:");
+        while (true) {
+            int userNumber = inputReader.getUserInput();
+            if (winnerVerifier.isWin(riddleNumber, userNumber)) {
+                dataPrinter.printInfoMessage("You have guessed the number!");
+                gameOverHandler.gameOver();
+                return;
+            } else {
+                dataPrinter.printInfoMessage(winnerVerifier.getNumberComparisonInfo());
+            }
+        }
     }
 }

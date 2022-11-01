@@ -16,11 +16,9 @@
 
 package ua.mibal.guessthenumber;
 
-import ua.mibal.guessthenumber.component.ArgumentParser;
-import ua.mibal.guessthenumber.component.DataPrinter;
-import ua.mibal.guessthenumber.component.Game;
-import ua.mibal.guessthenumber.component.UserInputReader;
+import ua.mibal.guessthenumber.component.*;
 import ua.mibal.guessthenumber.component.console.ConsoleDataPrinter;
+import ua.mibal.guessthenumber.component.console.ConsoleGameOverHandler;
 import ua.mibal.guessthenumber.component.console.ConsoleInputReader;
 import ua.mibal.guessthenumber.component.swing.GameWindow;
 import ua.mibal.guessthenumber.model.UserInterface;
@@ -45,18 +43,25 @@ public class GameFactory {
     public Game create() {
         DataPrinter dataPrinter;
         UserInputReader inputReader;
+        final WinnerVerifier winnerVerifier = new WinnerVerifier();
+        GameOverHandler gameOverHandler;
         if(userInterface == GUI) {
             final GameWindow gameWindow = new GameWindow();
             dataPrinter = gameWindow;
             inputReader = gameWindow;
+            gameOverHandler = gameWindow;
         } else if(userInterface == CONSOLE){
             dataPrinter = new ConsoleDataPrinter();
             inputReader = new ConsoleInputReader(dataPrinter);
+            gameOverHandler = new ConsoleGameOverHandler();
         } else {
             throw new IllegalArgumentException(format(
-                    "User interface `%s` is undetected", userInterface.name()
+                    "User interface `%s` is incorrect", userInterface.name()
             ));
         }
-        return new Game(dataPrinter, inputReader);
+        return new Game(dataPrinter,
+                inputReader,
+                gameOverHandler,
+                winnerVerifier);
     }
 }
